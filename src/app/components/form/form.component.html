@@ -1,0 +1,31 @@
+<h1>Form Demo</h1>
+<ul>
+  <li>
+    name: <input type="text" placeholder="name" [(ngModel)]="humanInfo.name" >
+  </li>
+  <li>
+    sex:
+    <!--name=“sex” 可以让这两个radio为一组-->
+    <input type="radio" name="sex" value="male" id = "male" [(ngModel)]="humanInfo.sex"><label for="male">male</label>
+    <input type="radio" name="sex" value="female" id = "female" [(ngModel)]="humanInfo.sex"><label for="female">female</label>
+  </li>
+  <li>
+    city:
+    <select [(ngModel)]="humanInfo.city">
+      <option [value]="city" *ngFor="let city of humanInfo.cities">{{city}}</option>
+    </select>
+  </li>
+  <li>
+    hobby:
+    <span *ngFor="let hobby of humanInfo.hobbies;let key = index;">
+      <input type="checkbox" [(ngModel)]="hobby.checked" [checked]="hobby.checked" [id]="'hobby_'+key"><label [for]="'hobby_'+key">{{hobby.hobby}}</label>
+    </span>
+  </li>
+  <li>
+    <div>mark:</div>
+    <textarea [(ngModel)]="humanInfo.mark"></textarea>
+  </li>
+  <div>
+    {{humanInfo|json}}
+  </div>
+</ul>
