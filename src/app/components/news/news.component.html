@@ -1,0 +1,65 @@
+
+
+<h1>news component</h1>
+<hr>
+<h1>different brackets</h1>
+<h3>{{getTitle()}}</h3>
+<div class="green">CONTENT green</div>
+<div [class]="green">CONTENT red</div>
+<div [innerHTML]="content"></div>
+
+<hr>
+<h1>loops and if</h1>
+<ol >
+  <li *ngFor="let item of arr">
+    {{item}}
+  </li>
+
+</ol>
+
+<ul >
+  <li *ngFor="let item of arrList" style="text-align: center">
+    <span *ngIf="item.age == 6" class = 'red'>{{item.name}}_____{{item.age}}</span>
+    <span *ngIf="item.age == 7" class = 'green'>{{item.name}}_____{{item.age}}</span>
+    <span *ngIf="item.age == 8" class = 'red'>{{item.name}}_____{{item.age}}</span>
+  </li>
+</ul>
+
+<img src="assets/1.png" alt="SVG"/>
+
+<img [src]="picURL" alt="LINK"/>
+
+<div [ngClass]="{'red':toggle,'green':!toggle}">
+  ngClass demo
+</div>
+
+<ul >
+  <li *ngFor="let item of arrList;let key = index;" style="text-align: center" [ngClass]="{'red':key%2==0,'green':key%2==1}">
+    {{item.name}}_____{{item.age}}_____{{key}}
+  </li>
+</ul>
+
+
+<p [ngStyle]="{'background-color':bgColor}">
+  ngStyle demo
+</p>
+
+<p>
+  {{date | date:'yyyy-MM-dd HH:mm:ss'}}
+</p>
+<hr>
+<h1> event</h1>
+
+<input type="button" (click)="changeColor()" style="width:100px;height: 100px;" [ngStyle]="{'background-color': difColor?'orange':'blue'}">
+
+<input type="button" (click)="setToggle()" style="width: 100px;height: 40px;">
+
+<input type="text" (keydown)="monitorA($event)" >
+
+<hr>
+<h1>双向数据绑定， 只针对Form表单</h1>
+<!--mvvm-->
+
+<input type="text" [(ngModel)]="keyWord">
+{{keyWord}}
+<input type="button" (click)="changeKeyWord()" >
