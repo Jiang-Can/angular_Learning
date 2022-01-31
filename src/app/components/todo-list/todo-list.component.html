@@ -1,1 +1,38 @@
-<p>todo-list works!</p>
+<h1>Search History</h1>
+
+search key word:
+<input type="text" [(ngModel)]="keyWord">
+<input type="button" value="search" (click)="recordWord()">
+
+<h2>History list</h2>
+<ul>
+  <li *ngFor="let history of historyList;let key=index">
+    {{history}}
+    <button (click)="deleteHistory(key)">delete</button>
+  </li>
+
+</ul>
+<hr>
+<h1>Todo List</h1>
+Add TodoItem:
+<input type="text" [(ngModel)]="description">
+<input type="button" value="search" (click)="addTodoItem()">
+<ul>
+  <h3>In progress:</h3>
+  <li *ngFor="let todoItem of getInProgressTodoList();let key=index">
+    <input type="checkbox" [(ngModel)]="todoItem.done">
+    {{todoItem.desc}}
+  </li>
+</ul>
+<hr>
+
+<ul>
+  <h3>Done:</h3>
+  <li *ngFor="let todoItem of todoList;let key=index" [hidden]="!todoItem.done">
+    <input type="checkbox" [checked]="todoItem.done"  [(ngModel)]="todoItem.done">
+    {{todoItem.desc}}
+  </li>
+</ul>
+<div>
+  {{todoList | json}}
+</div>
